@@ -1,5 +1,5 @@
 resource "random_string" "storageaccount_name" {
-    length  = 22
+    length  = 20
     upper   = false
     special = false
 }
@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "log" {
 }
 
 resource "azurerm_storage_account" "log" {
-  name                     = "subscriptionlogs-${random_string.storageaccount_name.result}"
+  name                     = "sl-${random_string.storageaccount_name.result}"
   resource_group_name      = "${var.resource_group_name}"
   location                 = "${var.location}"
   account_tier             = "Standard"
@@ -17,7 +17,7 @@ resource "azurerm_storage_account" "log" {
 }
 
 resource "azurerm_eventhub_namespace" "log" {
-  name                = "subscriptionlogs--${random_string.storageaccount_name.result}"
+  name                = "sl-${random_string.storageaccount_name.result}"
   location            = "${var.location}"
   resource_group_name = "${var.resource_group_name}"
   sku                 = "Standard"
