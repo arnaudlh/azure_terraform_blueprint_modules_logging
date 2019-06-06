@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "log" {
 }
 
 resource "azurerm_storage_account" "log" {
-  name                     = "sl-${random_string.storageaccount_name.result}"
+  name                     = "sl${random_string.storageaccount_name.result}"
   resource_group_name      = "${var.resource_group_name}"
   location                 = "${var.location}"
   account_tier             = "Standard"
