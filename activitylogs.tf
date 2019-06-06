@@ -68,8 +68,8 @@ resource "azurerm_monitor_log_profile" "subscription" {
   ]
 
 # RootManageSharedAccessKey is created by default with listen, send, manage permissions
-# servicebus_rule_id = "${var.eventhubnamespace_id}/authorizationrules/RootManageSharedAccessKey"
-# storage_account_id = "${azurerm_storage_account.test.id}"
+servicebus_rule_id = "${azurerm_eventhub_namespace.log.id}/authorizationrules/RootManageSharedAccessKey"
+storage_account_id = "${azurerm_storage_account.log.id}"
 
   retention_policy {
     enabled = true
